@@ -2,8 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Project;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Faker\Generator as Faker;
 
 class ProjectsTableSeeder extends Seeder
 {
@@ -12,8 +14,16 @@ class ProjectsTableSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        //
+        for ($i = 0; $i < 50; $i++) {
+            $newProject = new Project();
+            $newProject->title = $faker->sentence(5);
+            $newProject->author = $faker->name();
+            $newProject->languages_used = $faker->text(5);
+            $newProject->content = $faker->text(300);
+            $newProject->project_date = $faker->dateTimeThisYear();
+            $newProject->save();
+        }
     }
 }
