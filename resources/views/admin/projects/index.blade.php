@@ -2,7 +2,10 @@
 
 @section('content')
     <div class="container">
-        <table class="table table-dark table-striped table-bordered table-hover mt-5">
+        <div class="col-12 text-end">
+            <a class="btn btn-sm btn-success mt-5" href="">Create new project</a>
+        </div>
+        <table class="table table-dark table-striped table-bordered table-hover mt-1">
             <thead>
                 <tr>
                     <th scope="col">id</th>
@@ -26,9 +29,9 @@
                         {{-- <td>{{ $project->content }}</td> --}}
                         <td>{{ $project->project_date }}</td>
                         <td>
-                            <a class="btn btn-sm btn-light" href="">Show</a>
+                            <a class="btn btn-sm btn-light" href="{{ route('admin.projects.show', $project->id) }}">Show</a>
                             <a class="btn btn-sm btn-light" href="">Edit</a>
-                            <a class="btn btn-sm btn-light" href="">Delete</a>
+                            <a class="btn btn-sm btn-danger" href="">Delete</a>
                         </td>
                     </tr>
                 @endforeach
