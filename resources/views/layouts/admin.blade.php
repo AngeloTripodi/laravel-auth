@@ -88,6 +88,24 @@
             </div>
         </nav>
 
+        <div class="container">
+            @if ($errors->any())
+                <div class="alert alert-info mt-5">
+                    <ul>
+
+                        @foreach ($errors->all() as $error)
+                            <li>
+                                {{ $error }}
+                            </li>
+                        @endforeach
+
+                    </ul>
+
+                </div>
+
+            @endif
+        </div>
+
         <main class="">
             @yield('content')
         </main>
