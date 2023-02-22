@@ -49,7 +49,7 @@ class ProjectController extends Controller
         $newProject->fill($data);
         $newProject->save();
 
-        return redirect()->route('admin.projects.index')->with('message', "Project $newProject->title has been created");
+        return redirect()->route('admin.projects.index')->with('message', "Project '$newProject->title' has been created")->with('message_class', 'success');
     }
 
     /**
@@ -99,8 +99,9 @@ class ProjectController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index')->with('message', "The project '$project->title' has been removed.")->with('message_class', 'danger');
     }
 }

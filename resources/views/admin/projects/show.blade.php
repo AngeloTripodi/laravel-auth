@@ -1,4 +1,7 @@
 @extends('layouts.admin')
+@section('entry')
+    @vite(['resources/js/popupDeleter.js'])
+@endsection
 
 @section('content')
     <div class="container">
@@ -13,8 +16,13 @@
                 <p class="card-text"> {{ $project->content }}</p>
                 <p></p>
                 <h6 class=" text-uppercase mb-4">{{ $project->languages_used }}</h6>
-                <a class="btn btn-sm btn-warning" href="">Edit</a>
-                <a class="btn btn-sm btn-danger" href="">Delete</a>
+                <a class="btn btn-sm btn-light" href="{{ route('admin.projects.edit', $project->id) }}">Edit</a>
+                <form class="d-inline-block popupDel" data-element-name="{{ $project->title }}"
+                    action="{{ route('admin.projects.destroy', $project->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                </form>
             </div>
         </div>
 
