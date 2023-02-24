@@ -6,6 +6,7 @@ use App\Models\Project;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Faker\Generator as Faker;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectsTableSeeder extends Seeder
 {
@@ -23,6 +24,8 @@ class ProjectsTableSeeder extends Seeder
             $newProject->languages_used = $faker->text(5);
             $newProject->content = $faker->text(300);
             $newProject->project_date = $faker->dateTimeThisYear();
+            // $newProject->image = $faker->image();
+            $newProject->image = 'plc.webp';
             $newProject->save();
         }
     }
