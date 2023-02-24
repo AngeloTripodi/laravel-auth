@@ -1,4 +1,4 @@
-<form class="mt-5" action="{{ route($route, $project) }}" method="POST">
+<form class="mt-5" action="{{ route($route, $project) }}" method="POST" enctype="multipart/form-data">
     @csrf
     @method($method)
 

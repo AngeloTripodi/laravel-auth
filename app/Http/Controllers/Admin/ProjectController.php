@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -43,8 +44,10 @@ class ProjectController extends Controller
             'languages_used' => 'required',
             'project_date' => 'required',
             'content' => 'required',
+            'image' => 'required|image',
         ]);
         $data['author'] = Auth::user()->name;
+        $data['image'] = Storage::put('uploads', $data['image']);
         $newProject = new Project();
         $newProject->fill($data);
         $newProject->save();
