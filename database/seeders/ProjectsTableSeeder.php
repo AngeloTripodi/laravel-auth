@@ -23,8 +23,8 @@ class ProjectsTableSeeder extends Seeder
             $newProject->languages_used = $faker->text(5);
             $newProject->content = $faker->text(300);
             $newProject->project_date = $faker->dateTimeThisYear();
-            // $newProject->image = $faker->image();
-            $newProject->image = 'plc.webp';
+            $newProject->image = $faker->imageUrl();
+            // $newProject->image = 'plc.webp';
             $newProject->save();
         }
     }

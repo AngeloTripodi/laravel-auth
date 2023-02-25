@@ -104,6 +104,10 @@ class ProjectController extends Controller
      */
     public function destroy(Project $project)
     {
+        if (!str_starts_with($project->image, 'http')) {
+            Storage::delete($project->image);
+        }
+
         $project->delete();
         return redirect()->route('admin.projects.index')->with('message', "The project '$project->title' has been removed.")->with('message_class', 'danger');
     }
